@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Peliculas</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">Cerrar sesión</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let movie of movies" (click)="openMovie(movie.id)">
+      <ion-thumbnail slot="start">
+        <ion-img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"></ion-img>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{movie.title}}</h2>
+        <p>{{movie.release_date}} | {{movie.vote_average}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="prevPage()" style="--background:#ff0000">Previous</ion-button>
+  <ion-label>Página {{page}}</ion-label>
+  <ion-button (click)="nextPage()" style="--background:#ff0000">Next</ion-button>
+</ion-content>
